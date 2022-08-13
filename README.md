@@ -37,4 +37,4 @@ Hola, aquí mi pruba técnica.
 
 
 - Para correr el script: desde la carpeta contenedora: 
-> >python script.py
+> python script.py
