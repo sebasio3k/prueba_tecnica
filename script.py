@@ -11,9 +11,9 @@ if __name__ == '__main__':
 
 
     def create_user():
-        name = 'Sebastian'
+        name = 'Sebastian HO'
         username = 'sebasio'
-        password = 'test1408'
+        password = 'test'
 
         try:
             if not Users.objects.filter(username='sebasio'):
@@ -37,7 +37,7 @@ if __name__ == '__main__':
             Bienes.objects.all().delete()
 
             for row in reader:
-                print(row)
+                # print(row)
                 registro = Bienes(
                     articulo=row[0],
                     descripcion=row[1],
