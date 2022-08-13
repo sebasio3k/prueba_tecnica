@@ -1,5 +1,6 @@
 from django.http import JsonResponse
 from rest_framework import generics
+from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 
 from bienes.models import Bienes
@@ -11,8 +12,7 @@ from users.serializers.v1.users_serializers import UserSerializer
 class ListBienes(generics.ListCreateAPIView):
     queryset = Bienes.objects.all()
     serializer_class = BienesSerializer
-
-    # permission_classes = [IsAdminUser]
+    permission_classes = [IsAuthenticated]
 
     def create(self, request, *args, **kwargs):
 
@@ -34,6 +34,7 @@ class ListBienes(generics.ListCreateAPIView):
 class BienesUpdateRetrieveDeleteView(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = BienesSerializer
     queryset = BienesSerializer.Meta.model.objects
+    permission_classes = [IsAuthenticated]
 
     def update(self, request, pk=None, *args, **kwargs):
         print(f'llave: {pk}')
@@ -56,27 +57,17 @@ class BienesUpdateRetrieveDeleteView(generics.RetrieveUpdateDestroyAPIView):
 
 
 class SpecialBienesView(generics.ListAPIView):
-    # queryset = Bienes.objects.all()
     serializer_class = BienesSerializer
+    permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
-
-        # Get URL parameter as a string, if exists
         ids = self.request.query_params.get('ids', None)
         print('ids', ids)
 
-        # Get snippets for ids if they exist
         if ids is not None:
-            print('if')
-            # Convert parameter string to list of integers
             ids = [int(x) for x in ids.split(',')]
-            # Get objects for all parameter ids
             queryset = Bienes.objects.filter(pk__in=ids)
-            print(queryset)
-
         else:
-            print('else')
-            # Else no parameters, return all objects
             queryset = Bienes.objects.all()
 
         return queryset
