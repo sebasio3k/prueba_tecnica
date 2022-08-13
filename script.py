@@ -23,7 +23,7 @@ if __name__ == '__main__':
                 )
                 user.set_password(password)
                 user.save()
-                print(f'Usuario creado: username:{username}')
+                print(f'User Created: username:{username}')
 
         except Exception as e:
             print(e)
@@ -44,6 +44,8 @@ if __name__ == '__main__':
                     usuario=Users.objects.get(pk=1)
                 )
                 registro.save()
+
+        print('Population Complete')
 
 
     create_user()
