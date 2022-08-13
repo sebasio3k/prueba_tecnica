@@ -16,6 +16,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+from bienes.api.v1.bienes_views import ListBienes, BienesUpdateRetrieveDeleteView, SpecialBienesView
+from users.views import ListUsers
+
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('api/v1/bienes', ListBienes.as_view(), name='bienes_api'),
+    path('api/v1/bienes/<int:pk>', BienesUpdateRetrieveDeleteView.as_view(), name='bienes_api_update'),
+    path('api/v1/special-bienes/', SpecialBienesView.as_view(), name='special_bienes'),
+    path('api/v1/users', ListUsers.as_view(), name='users_api'),
 ]

@@ -17,11 +17,12 @@ if __name__ == '__main__':
 
         try:
             if not Users.objects.filter(username='sebasio'):
-                Users.objects.create(
+                user = Users(
                     name=name,
-                    username=username,
-                    password=password
+                    username=username
                 )
+                user.set_password(password)
+                user.save()
                 print(f'Usuario creado: username:{username}')
 
         except Exception as e:
