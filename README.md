@@ -2,17 +2,17 @@
 
 
 
-### Create virtual ENV
+### Creatar Entorno Virtual
     python3 -m venv venv
 
-### Install project's requirements
+### Instalar requerimientos del proyecto
      pip3 install -r requirements.txt
      
-### Make migrations
+### Migraciones
     python manage.py makemigrations
     python manage.py migrate
     
-- Utilicé variables de entorno, así que asegúrate de configurarlas en tu archivo .env
+- Utilicé variables de entorno, así que asegúrate de configurarlas en tu archivo .env para la configuracion de la bd :)
 
 
 - Para correr el script: desde la carpeta contenedora: 
