@@ -23,7 +23,7 @@ Hola, aquí mi pruba técnica.
 
 
 
-### Creatar Entorno Virtual
+### Crear Entorno Virtual
     python3 -m venv venv
 
 ### Instalar requerimientos del proyecto
